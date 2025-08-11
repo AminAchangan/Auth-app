@@ -1,0 +1,30 @@
+$red: #e63946;
+.wrapper {
+  margin-bottom: 1rem;
+  .errorMsg {
+    color: $red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  height: 40px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  margin-bottom: 0.25rem;
+
+  &:focus {
+    outline: none;
+    border-color: #351d57;
+    box-shadow: 0 0 4px #2f1d57aa;
+  }
+
+  &.error {
+    border-color: $red;
+  }
+}

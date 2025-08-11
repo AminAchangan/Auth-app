@@ -1,0 +1,28 @@
+.container {
+  max-width: 400px;
+  margin: 150px auto;
+  padding:2rem 2rem 2.5rem 2rem ;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  background-color: #f1f4f6;
+  border-radius: 18px;
+  font-family: "Vazirmatn", sans-serif;
+}
+
+.title {
+  font-size: 3rem;
+  color: #351d57;
+  margin-bottom: 4rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.errorMsg {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+

@@ -1,0 +1,108 @@
+$violet: #7b3ee5;
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f6f8;
+  border-radius: 12px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 2.25rem;
+  margin-top: 24px;
+  margin-bottom: 38px;
+  text-align: center;
+  color: #1a202c;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 38px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid $violet;
+  background-color: #fff;
+}
+
+.userName {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.email {
+  margin: 4px 0;
+  color: #4a5568;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.location {
+  margin: 0;
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+.detailsSection {
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.sectionTitle {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: #1a202c;
+  border-left: 4px solid $violet;
+  padding-left: 8px;
+}
+
+.detailsList {
+  list-style: none;
+  padding-left: 0;
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.6;
+
+  li {
+    margin-bottom: 12px;
+
+    strong {
+      color: #2d3748;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+  }
+}
+
+.logoutBtn {
+  display: block;
+  margin: 32px auto 0 auto;
+  padding: 10px 28px;
+  background-color: $violet;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+
+  &:hover {
+    background-color: darken($violet, 10%);
+  }
+}
