@@ -1,14 +1,17 @@
-import React, { ButtonHTMLAttributes } from "react";
-import styles from "./Button.module.scss";
+import React, { forwardRef, ButtonHTMLAttributes } from 'react'
+import styles from './Button.module.scss'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
-
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+const Button = forwardRef<
+  HTMLButtonElement,
+  ButtonHTMLAttributes<HTMLButtonElement>
+>(({ children, type = 'button', ...props }, ref) => {
   return (
-    <button className={styles.button} {...props}>
+    <button ref={ref} type={type} className={styles.button} {...props}>
       {children}
     </button>
-  );
-};
+  )
+})
 
-export default Button;
+Button.displayName = 'Button'
+
+export default Button

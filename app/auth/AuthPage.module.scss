@@ -1,28 +1,49 @@
+:root {
+  --color-error: #e63946;
+  --color-title: #351d57;
+  --color-background: #f1f4f6;
+}
+
 .container {
   max-width: 400px;
   margin: 150px auto;
-  padding:2rem 2rem 2.5rem 2rem ;
+  padding: 2rem 2rem 2.5rem 2rem;
   height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: end;
-  background-color: #f1f4f6;
+  background-color: var(--color-background);
   border-radius: 18px;
   font-family: "Vazirmatn", sans-serif;
+  transition: padding 0.3s ease, margin 0.3s ease;
 }
 
 .title {
   font-size: 3rem;
-  color: #351d57;
+  color: var(--color-title);
   margin-bottom: 4rem;
   text-align: center;
   font-weight: 700;
 }
 
 .errorMsg {
-  color: #e63946;
+  color: var(--color-error);
   font-size: 0.9rem;
   margin-top: 1rem;
   text-align: center;
+  transition: color 0.3s ease;
 }
 
+@media (max-width: 480px) {
+  .container {
+    max-width: 90vw;
+    margin: 80px auto;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}

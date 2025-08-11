@@ -1,44 +1,54 @@
-"use client";
+'use client'
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
-import styles from "./dashboard.module.scss";
+import { useEffect, useCallback, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import { useAuth } from '@/context/AuthContext'
+import styles from './dashboard.module.scss'
 
 export default function DashboardPage() {
-  const router = useRouter();
-  const { user, logout } = useAuth();
+  const router = useRouter()
+  const { user, logout } = useAuth()
+  const [loadingRedirect, setLoadingRedirect] = useState(false)
 
   useEffect(() => {
     if (!user) {
-      router.replace("/auth");
+      setLoadingRedirect(true)
+      router.replace('/auth')
     }
-  }, [user, router]);
+  }, [user, router])
 
-  if (!user) return null;
+  const handleLogout = useCallback(() => {
+    logout()
+    router.replace('/auth')
+  }, [logout, router])
 
-  const handleLogout = () => {
-    logout();
-    router.replace("/auth");
-  };
+  if (loadingRedirect) {
+    return <p>Redirecting to login...</p>
+  }
+
+  if (!user) return null
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Welcome to Your Dashboard</h1>
 
       <div className={styles.userCard}>
-        <img
-          src={user.picture?.medium || "/default-avatar.png"}
-          alt={`${user.name?.first} ${user.name?.last}`}
+        <Image
+          src={user.picture?.medium || '/default-avatar.png'}
+          alt={`${user.name?.first ?? ''} ${user.name?.last ?? ''}`}
+          width={100}
+          height={100}
           className={styles.avatar}
         />
         <div>
           <h2 className={styles.userName}>
-            {user.name?.title} {user.name?.first} {user.name?.last}
+            {user.name?.title ?? ''} {user.name?.first ?? ''}{' '}
+            {user.name?.last ?? ''}
           </h2>
-          <p className={styles.email}>{user.email}</p>
+          <p className={styles.email}>{user.email ?? 'No email provided'}</p>
           <p className={styles.location}>
-            {user.location?.city}, {user.location?.state}
+            {user.location?.city ?? 'Unknown'}, {user.location?.state ?? ''}
           </p>
         </div>
       </div>
@@ -47,29 +57,33 @@ export default function DashboardPage() {
         <h3 className={styles.sectionTitle}>Your Details</h3>
         <ul className={styles.detailsList}>
           <li>
-            <strong>Gender:</strong> {user.gender}
+            <strong>Gender:</strong> {user.gender ?? 'N/A'}
           </li>
           <li>
-            <strong>Phone:</strong> {user.phone}
+            <strong>Phone:</strong> {user.phone ?? 'N/A'}
           </li>
           <li>
-            <strong>Cell:</strong> {user.cell}
+            <strong>Cell:</strong> {user.cell ?? 'N/A'}
           </li>
           <li>
-            <strong>Date of Birth:</strong>{" "}
+            <strong>Date of Birth:</strong>{' '}
             {user.dob?.date
               ? new Date(user.dob.date).toLocaleDateString()
-              : "N/A"}
+              : 'N/A'}
           </li>
           <li>
-            <strong>Nationality:</strong> {user.nat}
+            <strong>Nationality:</strong> {user.nat ?? 'N/A'}
           </li>
         </ul>
       </section>
 
-      <button className={styles.logoutBtn} onClick={handleLogout}>
+      <button
+        className={styles.logoutBtn}
+        onClick={handleLogout}
+        aria-label="Logout"
+      >
         Logout
       </button>
     </div>
-  );
+  )
 }
