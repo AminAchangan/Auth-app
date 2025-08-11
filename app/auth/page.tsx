@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Input from "@/components/ui/Input";
-import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input/Input";
+import Button from "@/components/ui/Button/Button";
 import { phoneSchema } from "@/utils/validation";
 import { useAuth } from "@/context/AuthContext";
-import Loader from "@/components/ui/Loader";
+import Loader from "@/components/ui/Loader/Loader";
 import styles from "./AuthPage.module.scss";
 import z from "zod";
 
